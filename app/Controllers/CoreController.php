@@ -15,12 +15,4 @@ class CoreController
         $this->application = $application;
         $this->twig = $twig;
     }
-
-    public function isLoggedIn(): bool
-    {
-        $userId = $_SESSION['user_id'] ?? null;
-        $userName = $_SESSION['user_name'] ?? null;
-
-        return $userId !== '' && $userId !== null && $userName !== '' && $userName !== null;
-    }
 }

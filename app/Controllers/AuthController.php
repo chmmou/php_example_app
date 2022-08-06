@@ -9,7 +9,7 @@ class AuthController extends CoreController
 {
     public function login(UserRepository $repository): void
     {
-        if ($this->isLoggedIn()) {
+        if ($this->application->isUserLoggedIn()) {
             $this->application->getRequest()->redirect('/user');
         }
 

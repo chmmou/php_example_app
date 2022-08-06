@@ -42,4 +42,12 @@ class CoreApplication
     {
         return $this->request;
     }
+
+    public function isUserLoggedIn(): bool
+    {
+        $userId = $_SESSION['user_id'] ?? null;
+        $userName = $_SESSION['user_name'] ?? null;
+
+        return $userId !== '' && $userId !== null && $userName !== '' && $userName !== null;
+    }
 }
