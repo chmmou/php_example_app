@@ -10,11 +10,11 @@ class Logger extends \Monolog\Logger
 {
     protected static array $loggers;
 
-    public function __construct($key = "app", $configs = null)
+    public function __construct($key = "app", array $config = [])
     {
         parent::__construct($key);
 
-        if (empty($config)) {
+        if (count($config) === 0) {
             $log_path = __DIR__ . '/../../' . Config::getEnv('LOG_PATH');
             $config = [
                 'logFile' => "{$log_path}/{$key}.log",
@@ -25,7 +25,7 @@ class Logger extends \Monolog\Logger
         $this->pushHandler(new StreamHandler($config['logFile'], $config['logLevel']));
     }
 
-    public static function getInstance($key = "app", $config = null)
+    public static function getInstance($key = "app", array $config = [])
     {
         if (empty(self::$loggers[$key])) {
             self::$loggers[$key] = new Logger($key, $config);

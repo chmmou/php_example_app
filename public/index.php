@@ -23,10 +23,15 @@ if ($uri !== '/' && (file_exists(__DIR__ . $uri) || preg_match('/\.(?:png|jpg|jp
 $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/login', ['WorkshopTask\Controllers\AuthController', 'login']);
     $r->addRoute('POST', '/login', ['WorkshopTask\Controllers\AuthController', 'login']);
-    $r->addRoute('POST', '/logout', ['WorkshopTask\Controllers\AuthController', 'logout']);
+
+    $r->addRoute('GET', '/register', ['WorkshopTask\Controllers\AuthController', 'register']);
+    $r->addRoute('POST', '/register', ['WorkshopTask\Controllers\AuthController', 'register']);
+
+    $r->addRoute('GET', '/logout', ['WorkshopTask\Controllers\AuthController', 'logout']);
+
 
     $r->addRoute('GET', '/', ['WorkshopTask\Controllers\IndexController', 'index']);
-    $r->addRoute('POST', '/', ['WorkshopTask\Controllers\IndexController', 'upload']);
+    $r->addRoute('GET', '/user', ['WorkshopTask\Controllers\IndexController', 'user']);
 
     $r->addRoute('GET', '/tweets', ['WorkshopTask\Controllers\TweetController', 'index']);
     $r->addRoute('GET', '/tweets/detail/{id:\d+}/', ['WorkshopTask\Controllers\TweetController', 'detail']);
@@ -46,7 +51,7 @@ switch ($route[0]) {
         break;
 
     case FastRoute\Dispatcher::FOUND:
-        $app = new \WorkshopTask\Application();
+        $app = new \WorkshopTask\Application(new \WorkshopTask\Config\Config());
         $app->getContainer()->call($route[1], $route[2]);
         break;
 }

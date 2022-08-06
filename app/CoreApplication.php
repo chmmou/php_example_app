@@ -16,25 +16,9 @@ class CoreApplication
     private RequestInterface $request;
     private Logger $logger;
 
-    public function __construct()
+    public function __construct(Config $config)
     {
-        $this->init(dirname(__DIR__));
-    }
-
-    public function getContainer(): ?Container
-    {
-        return $this->container;
-    }
-
-    public function getRequest(): RequestInterface
-    {
-        return $this->request;
-    }
-
-    protected function init(string $path): void
-    {
-        $this->config = new Config($path);
-        $this->config->init();
+        $this->config = $config;
 
         $containerBuilder = new ContainerBuilder();
         $containerBuilder->useAutowiring(true);
@@ -48,4 +32,13 @@ class CoreApplication
         $this->logger->enableSystemLogs();
     }
 
+    public function getContainer(): ?Container
+    {
+        return $this->container;
+    }
+
+    public function getRequest(): RequestInterface
+    {
+        return $this->request;
+    }
 }

@@ -8,35 +8,33 @@ use WorkshopTask\Exceptions\FileNotFoundException;
 use Symfony\Component\Dotenv\Dotenv;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use WorkshopTask\Http\Request;
-use WorkshopTask\Http\RequestInterface;
 use WorkshopTask\Repositories\TweetRepository;
 use WorkshopTask\Repositories\UserRepository;
 use function DI\create;
 
 class Config
 {
-    private Dotenv $dotenv;
-
-    public function __construct(public string $path)
+    public function __construct()
     {
-        $this->dotenv = new Dotenv();
+        $this->init();
     }
 
-    public function init(): void
+    protected function init(): void
     {
-        $envFile = $this->path . '/.env';
+        $dotenv = new Dotenv();
+        $envFile = dirname(__DIR__) . '/../.env';
         if (!file_exists($envFile)) {
             throw new FileNotFoundException("File '${envFile}' was not found!");
         }
 
-        $this->dotenv->loadEnv($envFile);
+        $dotenv->loadEnv($envFile);
     }
 
     public function getDependencyInjection(): array
     {
         return [
             // DI
+            Config::class => create(Config::class),
             CoreApplication::class => create(Application::class),
             UserRepository::class => create(UserRepository::class),
             TweetRepository::class => create(TweetRepository::class),

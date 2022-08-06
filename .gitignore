@@ -3,6 +3,7 @@ vendor
 .vagrant
 resources/*
 !resources/.gitkeep
+!resources/workshoptask.sql
 logs/*
 !logs/.gitkeep
 .env

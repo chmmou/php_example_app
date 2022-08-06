@@ -14,15 +14,8 @@ class IndexController extends CoreController
         );
     }
 
-    public function upload(): void
+    public function user(): void
     {
-        $da = $this->application->getRequest()->getRequestParameters();
-
-        echo $this->twig->render(
-            'index.twig',
-            [
-                'title' => $this->application->getApplicationTitle()
-            ]
-        );
+        echo $this->twig->render('user.twig');
     }
 }
