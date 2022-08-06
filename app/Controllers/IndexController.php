@@ -17,6 +17,11 @@ class IndexController extends CoreController
 
     public function user(): void
     {
-        echo $this->twig->render('user.twig');
+        if ($this->application->isUserLoggedIn()) {
+            echo $this->twig->render('user.twig');
+            return;
+        }
+
+        $this->application->getRequest()->redirect('/login');
     }
 }
