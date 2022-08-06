@@ -1,0 +1,36 @@
+{
+    "name": "asaal/workshop_task",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WorkshopTask\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexander Saal",
+            "email": "alexander.saal@chm-projects.de"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "nesbot/carbon": "^2.59",
+        "php-di/php-di": "dev-master",
+        "symfony/dotenv": "6.2.x-dev",
+        "nikic/fast-route": "2.0.x-dev",
+        "twig/twig": "3.x-dev",
+        "monolog/monolog": "3.x-dev"
+    },
+    "require-dev": {
+        "laravel/homestead": "dev-main"
+    },
+    "minimum-stability": "dev"
+}

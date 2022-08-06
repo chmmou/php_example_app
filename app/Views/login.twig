@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <h1>Welcome to the {{ title }}!</h1>
+
+    <form method="POST"
+          action="/login"
+          enctype="multipart/form-data"
+          name="upload_form">
+
+        <label for="name" class="col-sm-2 col-form-label">Name:</label>
+        <input type="text" name="email" id="name">
+
+        <label for="password" class="col-sm-2 col-form-label">Password:</label>
+        <input type="text" name="password" id="password">
+
+        <button type="submit" name="login">Anmelden</button>
+    </form>
+
+
+{% endblock %}

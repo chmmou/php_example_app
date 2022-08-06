@@ -1,0 +1,31 @@
+ip: 192.168.56.56
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: '.'
+      to: /home/vagrant/code
+
+sites:
+    - map: workshoptask.local
+      to: /home/vagrant/code/public
+
+databases:
+    - workshoptask
+
+features:
+    - mysql: true
+    - mariadb: false
+    - postgresql: false
+    - ohmyzsh: false
+    - webdriver: false
+
+services:
+    - enabled: [mysql]
+
+name: project-workshoptask
+hostname: project-workshoptask.local
