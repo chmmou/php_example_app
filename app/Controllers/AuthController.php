@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace WorkshopTask\Controllers;
 
@@ -56,9 +57,15 @@ class AuthController extends CoreController
         $this->application->getRequest()->redirect('/user');
     }
 
-    public function logout(): void
+    public function logout(UserRepository $repository): void
     {
+        $repository->update([
+            'id' => $_SESSION['user_id'],
+            'loggedin' => 0,
+        ]);
+
         unset($_SESSION['user_id'], $_SESSION['user_name']);
+
         $this->application->getRequest()->redirect('/login');
     }
 
@@ -83,6 +90,10 @@ class AuthController extends CoreController
             'name' => $request['name'],
             'password' => password_hash($request['password'], PASSWORD_DEFAULT),
         ]);
+
+        if (count($user) === 0) {
+            $this->application->getRequest()->redirect('/register');
+        }
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['name'];

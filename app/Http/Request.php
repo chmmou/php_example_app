@@ -2,8 +2,6 @@
 
 namespace WorkshopTask\Http;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class Request implements RequestInterface
 {
     public string $reqMethod;

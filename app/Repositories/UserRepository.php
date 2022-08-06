@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace WorkshopTask\Repositories;
 
@@ -25,8 +26,8 @@ class UserRepository extends BaseRepository implements RepositoryInterface
         );
 
         return $stmt->execute([
-            'loggedin' => $data['id'],
-            'id' => $data['loggedin'],
+            'id' => $data['id'],
+            'loggedin' => $data['loggedin'],
         ]);
     }
 
