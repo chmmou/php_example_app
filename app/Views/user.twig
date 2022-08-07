@@ -1,5 +1,51 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    <h1>User!</h1>
+    <h1>User: {{ user_name | e }}</h1>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+    <form method="POST"
+          action="/tweets/create"
+          enctype="multipart/form-data"
+          name="new_tweet_form">
+        <div>
+            <label for="tweet_title" class="col-sm-2 col-form-label">Title:</label>
+            <input type="text" name="title" id="tweet_title">
+        </div>
+        <div>
+            <label for="tweet_content" class="col-sm-2 col-form-label">Message:</label>
+            <textarea name="content" id="tweet_content" rows="4" style="width: 100%"></textarea>
+        </div>
+        <button type="submit" name="new_tweet" value="1">Create</button>
+    </form>
+
+    {% for tweet in tweets %}
+        <hr>
+        <form method="POST"
+              action="/tweets/edit"
+              enctype="multipart/form-data"
+              name="update_tweet_form_{{ tweet.id }}">
+            <input type="hidden" name="id" value="{{ tweet.id }}">
+            <div>
+                <label for="tweet_title_{{ tweet.id }}" class="col-sm-2 col-form-label">Title:</label>
+                <input type="text" name="title" id="tweet_title_{{ tweet.id }}" value="{{ tweet.title | e }}">
+            </div>
+            <div>
+                <label for="tweet_content_{{ tweet.id }}" class="col-sm-2 col-form-label">Message:</label>
+                <textarea name="content" id="tweet_content_{{ tweet.id }}" rows="4" style="width: 100%">{{ tweet.content | e }}</textarea>
+            </div>
+            <button type="submit" name="update_tweet_{{ tweet.id }}" value="{{ tweet.id }}">Update</button>
+        </form>
+        <form method="POST"
+              action="/tweets/delete"
+              enctype="multipart/form-data"
+              name="delete_tweet_form_{{ tweet.id }}">
+            <input type="hidden" name="tweet_id" value="{{ tweet.id }}">
+            <button type="submit" name="delete_tweet_{{ tweet.id }}" value="{{ tweet.id }}">Remove</button>
+        </form>
+    {% else %}
+        <p><em>No tweets found</em></p>
+    {% endfor %}
 {% endblock %}

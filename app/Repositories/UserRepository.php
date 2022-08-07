@@ -19,6 +19,11 @@ class UserRepository extends BaseRepository implements RepositoryInterface
         return $rows[0] ?? [];
     }
 
+    public function getByUserId(int $userId): array
+    {
+        return [];
+    }
+
     public function update(array $data): bool
     {
         $stmt = $this->databaseConnection->prepare(
@@ -52,5 +57,10 @@ class UserRepository extends BaseRepository implements RepositoryInterface
         ]);
 
         return $this->get($data);
+    }
+
+    public function softDelete(array $data): bool
+    {
+        return false;
     }
 }

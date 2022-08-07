@@ -16,7 +16,7 @@ class AuthController extends CoreController
         $request = $this->application->getRequest()->getRequestParameters();
 
         if ($this->isRequestValid($request) === false) {
-            echo $this->twig->render('login.twig');
+            echo $this->twig->render('auth/login.twig');
             return;
         }
 
@@ -24,7 +24,7 @@ class AuthController extends CoreController
             'name' => $request['name'],
         ]);
 
-        if (count($user) === 0 || (int) $user['loggedin'] === 0) {
+        if (count($user) === 0) {
             $_SESSION['user_id'] = null;
             $_SESSION['user_name'] = null;
 
@@ -37,7 +37,6 @@ class AuthController extends CoreController
 
             $this->application->getRequest()->redirect('/login');
         }
-
 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['name'];
@@ -66,7 +65,7 @@ class AuthController extends CoreController
 
         unset($_SESSION['user_id'], $_SESSION['user_name']);
 
-        $this->application->getRequest()->redirect('/login');
+        $this->application->getRequest()->redirect('/');
     }
 
     public function register(UserRepository $repository): void
@@ -74,7 +73,7 @@ class AuthController extends CoreController
         $request = $this->application->getRequest()->getRequestParameters();
 
         if ($this->isRequestValid($request) === false) {
-            echo $this->twig->render('register.twig');
+            echo $this->twig->render('auth/register.twig');
             return;
         }
 
@@ -82,7 +81,7 @@ class AuthController extends CoreController
         $userConfirmPassword = $request['confirm_password'];
 
         if ($userPassword !== $userConfirmPassword) {
-            echo $this->twig->render('register.twig');
+            echo $this->twig->render('auth/register.twig');
             return;
         }
 

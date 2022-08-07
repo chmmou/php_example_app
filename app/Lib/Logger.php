@@ -35,7 +35,7 @@ class Logger extends \Monolog\Logger
         return self::$loggers[$key];
     }
 
-    public function enableSystemLogs()
+    public static function enableSystemLogs()
     {
         $log_path = __DIR__ . '/../../' . Config::getEnv('LOG_PATH');
 

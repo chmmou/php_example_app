@@ -35,7 +35,6 @@ class Config
     {
         return [
             // DI
-            Config::class => create(Config::class),
             CoreApplication::class => create(Application::class),
             UserRepository::class => create(UserRepository::class),
             TweetRepository::class => create(TweetRepository::class),
@@ -43,7 +42,9 @@ class Config
             // Configure Twig
             Environment::class => function () {
                 $loader = new FilesystemLoader(__DIR__ . '/../Views');
-                return new Environment($loader);
+                $env = new Environment($loader);
+                $env->getExtension(\Twig\Extension\CoreExtension::class)->setTimezone('Europe/Berlin');
+                return $env;
             },
         ];
     }

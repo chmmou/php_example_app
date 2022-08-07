@@ -15,7 +15,6 @@ class CoreApplication
     protected ?Config $config = null;
     private Container $container;
     private RequestInterface $request;
-    private Logger $logger;
 
     public function __construct(Config $config)
     {
@@ -29,8 +28,7 @@ class CoreApplication
 
         $this->request = new Request();
 
-        $this->logger = Logger::getInstance();
-        $this->logger->enableSystemLogs();
+        Logger::enableSystemLogs();
     }
 
     public function getContainer(): ?Container
@@ -49,5 +47,15 @@ class CoreApplication
         $userName = $_SESSION['user_name'] ?? null;
 
         return $userId !== '' && $userId !== null && $userName !== '' && $userName !== null;
+    }
+
+    public function getLoggedInUserId(): ?int
+    {
+        return $_SESSION['user_id'] ?? null;
+    }
+
+    public function getLoggedInUserName(): ?string
+    {
+        return $_SESSION['user_name'] ?? null;
     }
 }

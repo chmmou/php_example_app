@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <h1>Detail!</h1>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+
+    {% for tweet in tweets %}
+        <h3>#{{ tweet.id }} - {{ tweet.title | e }} - <em><small>{{ tweet.user_name | e }} - {{ tweet.created }}</small></em></h3>
+        <p>{{ tweet.content | e }}</p>
+    {%  else %}
+        <em>no user found</em>
+    {% endfor %}
+
+{% endblock %}

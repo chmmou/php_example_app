@@ -7,4 +7,15 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
     </ul>
+
+    {% for tweet in tweets %}
+        <h3><a href="/tweets/detail/{{ tweet.id }}">{{ tweet.title | e }}</a> - <em><small>{{ tweet.user_name | e }} at {{ tweet.created | date('m.d.Y - H:i:s', 'Europe/Berlin') }}</small></em></h3>
+        <p>{{ tweet.content | slice(0, 70) ~ '...' | e }}</p>
+        {% if tweet.created != tweet.updated  %}
+            <em><small>Last modified at {{ tweet.updated | date('m.d.Y - H:i:s', 'Europe/Berlin') }}</small></em>
+        {% endif %}
+    {%  else %}
+        <em>no user found</em>
+    {% endfor %}
+
 {% endblock %}

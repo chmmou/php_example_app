@@ -4,8 +4,8 @@ namespace WorkshopTask\Http;
 
 class Request implements RequestInterface
 {
-    public string $reqMethod;
-    public string $contentType;
+    protected string $reqMethod;
+    protected string $contentType;
 
     public function __construct()
     {
@@ -19,12 +19,12 @@ class Request implements RequestInterface
             return [];
         }
 
-        $body = [];
+        $requestParameters = [];
         foreach ($_POST as $key => $value) {
-            $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            $requestParameters[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
         }
 
-        return $body;
+        return $requestParameters;
     }
 
     public function redirect(string $url): void
