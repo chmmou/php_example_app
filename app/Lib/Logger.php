@@ -5,6 +5,7 @@ namespace WorkshopTask\Lib;
 
 use Monolog\ErrorHandler;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use WorkshopTask\Config\Config;
 
 class Logger extends \Monolog\Logger
@@ -19,20 +20,11 @@ class Logger extends \Monolog\Logger
             $log_path = __DIR__ . '/../../' . Config::getEnv('LOG_PATH');
             $config = [
                 'logFile' => "{$log_path}/{$key}.log",
-                'logLevel' => \Monolog\Logger::DEBUG
+                'logLevel' => Level::Debug
             ];
         }
 
         $this->pushHandler(new StreamHandler($config['logFile'], $config['logLevel']));
-    }
-
-    public static function getInstance($key = "app", array $config = [])
-    {
-        if (empty(self::$loggers[$key])) {
-            self::$loggers[$key] = new Logger($key, $config);
-        }
-
-        return self::$loggers[$key];
     }
 
     public static function enableSystemLogs()

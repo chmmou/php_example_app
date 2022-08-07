@@ -4,18 +4,16 @@ namespace WorkshopTask\Http;
 
 class Request implements RequestInterface
 {
-    protected string $reqMethod;
-    protected string $contentType;
+    protected string $requestMethod;
 
     public function __construct()
     {
-        $this->reqMethod = trim($_SERVER['REQUEST_METHOD']);
-        $this->contentType = !empty($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        $this->requestMethod = trim($_SERVER['REQUEST_METHOD']);
     }
 
     public function getRequestParameters(): array
     {
-        if ($this->reqMethod !== 'POST') {
+        if ($this->requestMethod !== 'POST') {
             return [];
         }
 
