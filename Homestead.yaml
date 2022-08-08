@@ -11,11 +11,11 @@ folders:
       to: /home/vagrant/code
 
 sites:
-    - map: workshoptask.local
+    - map: php-example-app.local
       to: /home/vagrant/code/public
 
 databases:
-    - workshoptask
+    - php_example_app
 
 features:
     - mysql: true
@@ -27,5 +27,5 @@ features:
 services:
     - enabled: [mysql]
 
-name: project-workshoptask
-hostname: project-workshoptask.local
+name: php-example-app
+hostname: php-example-app.local

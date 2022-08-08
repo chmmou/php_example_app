@@ -20,6 +20,18 @@ or you can use Vagrant
 
 and add the following line to your hosts file
 
-    192.168.56.56 project-workshoptask.local
+    192.168.56.56 php-example-app.local
 
 and enjoy!
+
+## TODO
+
+- [ ] Improve request / response handling
+- [ ] Improve login / registration handling
+- [ ] Improve data fetching
+    - [ ] Use limitation for data fetching
+    - [ ] Use models for data holding
+- [ ] Add migration
+- [ ] Use more PHP 8 features
+- [ ] Improve frontend with css framework like Tailwindcss
+- [ ] ... TBD (to be defined) ...
