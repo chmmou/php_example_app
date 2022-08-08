@@ -1,4 +1,4 @@
-## workshoptask
+## PHP Example App
 
 This project demonstrates in a very simple way how to quickly develop a small application in PHP 7/8 without a framework or a cms system.
 
