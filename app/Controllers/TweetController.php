@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Controllers;
+namespace App\Controllers;
 
-use WorkshopTask\Repositories\TweetRepository;
+use App\Repositories\TweetRepository;
 
 class TweetController extends CoreController
 {

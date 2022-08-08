@@ -1,6 +1,6 @@
 <?php
 
-namespace WorkshopTask\Http;
+namespace App\Http;
 
 class Request implements RequestInterface
 {

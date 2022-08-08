@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Exceptions;
+namespace App\Exceptions;
 
 class FileNotFoundException extends \Exception
 {

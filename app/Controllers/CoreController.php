@@ -1,8 +1,8 @@
 <?php
 
-namespace WorkshopTask\Controllers;
+namespace App\Controllers;
 
-use WorkshopTask\Application;
+use App\Application;
 use Twig\Environment;
 
 class CoreController

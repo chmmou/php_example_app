@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Config;
+namespace App\Config;
 
-use WorkshopTask\Application;
-use WorkshopTask\CoreApplication;
-use WorkshopTask\Exceptions\FileNotFoundException;
+use App\Application;
+use App\CoreApplication;
+use App\Exceptions\FileNotFoundException;
 use Symfony\Component\Dotenv\Dotenv;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use WorkshopTask\Repositories\TweetRepository;
-use WorkshopTask\Repositories\UserRepository;
+use App\Repositories\TweetRepository;
+use App\Repositories\UserRepository;
 use function DI\create;
 
 class Config

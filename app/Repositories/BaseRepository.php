@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Repositories;
+namespace App\Repositories;
 
-use WorkshopTask\Config\Config;
-use WorkshopTask\Exceptions\FileNotFoundException;
+use App\Config\Config;
+use App\Exceptions\FileNotFoundException;
 
 class BaseRepository
 {

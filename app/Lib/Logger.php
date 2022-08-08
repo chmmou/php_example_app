@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Lib;
+namespace App\Lib;
 
 use Monolog\ErrorHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
-use WorkshopTask\Config\Config;
+use App\Config\Config;
 
 class Logger extends \Monolog\Logger
 {

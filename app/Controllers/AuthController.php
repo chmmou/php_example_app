@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Controllers;
+namespace App\Controllers;
 
-use WorkshopTask\Repositories\UserRepository;
+use App\Repositories\UserRepository;
 
 class AuthController extends CoreController
 {

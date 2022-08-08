@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Repositories;
+namespace App\Repositories;
 
 class UserRepository extends BaseRepository implements RepositoryInterface
 {

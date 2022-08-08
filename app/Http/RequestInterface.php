@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask\Http;
+namespace App\Http;
 
 interface RequestInterface
 {

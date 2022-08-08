@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace WorkshopTask;
+namespace App;
 
 use DI\Container;
 use DI\ContainerBuilder;
-use WorkshopTask\Config\Config;
-use WorkshopTask\Http\Request;
-use WorkshopTask\Http\RequestInterface;
-use WorkshopTask\Lib\Logger;
+use App\Config\Config;
+use App\Http\Request;
+use App\Http\RequestInterface;
+use App\Lib\Logger;
 
 class CoreApplication
 {
