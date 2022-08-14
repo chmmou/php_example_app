@@ -6,11 +6,11 @@ namespace App\Config;
 use App\Application;
 use App\CoreApplication;
 use App\Exceptions\FileNotFoundException;
+use App\Repositories\TweetRepository;
+use App\Repositories\UserRepository;
 use Symfony\Component\Dotenv\Dotenv;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Repositories\TweetRepository;
-use App\Repositories\UserRepository;
 use function DI\create;
 
 class Config
@@ -44,6 +44,13 @@ class Config
                 $loader = new FilesystemLoader(__DIR__ . '/../Views');
                 $env = new Environment($loader);
                 $env->getExtension(\Twig\Extension\CoreExtension::class)->setTimezone('Europe/Berlin');
+
+                $env->addFilter(
+                    new \Twig\TwigFilter('time', function () {
+                        return time();
+                    })
+                );
+
                 return $env;
             },
         ];

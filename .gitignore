@@ -1,8 +1,11 @@
 .idea
 vendor
 .vagrant
+public/css
+public/js
 resources/*
 !resources/.gitkeep
+!resources/css
 !resources/workshoptask.sql
 logs/*
 !logs/.gitkeep

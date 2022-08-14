@@ -9,6 +9,7 @@ keys:
 folders:
     - map: '.'
       to: /home/vagrant/code
+      type: 'nfs'
 
 sites:
     - map: php-example-app.local
